@@ -888,7 +888,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		this.isTouchHeld = false;
 		//alert('hi');
-                                   setTimeout('mySlowAllTouch(e.type',2000)
+                setTimeout('mySlowAllTouch(e.type)',200)
 		break;
 	case 'hold':
 		this.isTouchHeld = true;
