@@ -918,6 +918,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			break;
 		this.zoomFactor = this.baseZoomFactor * e.gesture.scale;
 		this.update();
+		alert('hi');
 		break;
 	default:
 		break;
