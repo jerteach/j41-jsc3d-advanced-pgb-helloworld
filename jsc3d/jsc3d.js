@@ -873,6 +873,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 	var clientX = e.gesture.center.pageX - document.body.scrollLeft;
 	var clientY = e.gesture.center.pageY - document.body.scrollTop;
 	var info = this.pick(clientX, clientY);
+	this.wasPinch = false;
 
 	switch(e.type) {
 	case 'touch':
@@ -888,7 +889,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		this.isTouchHeld = false;
 		//alert('hi');
-                setTimeout('mySlowAllTouch(e.type)',200)
+                setTimeout('mySlowAllTouch(this.wasPinch)',200)
 		break;
 	case 'hold':
 		this.isTouchHeld = true;
@@ -920,6 +921,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			break;
 		this.zoomFactor = this.baseZoomFactor * e.gesture.scale;
 		this.update();
+		this.wasPinch = true;
 		//alert('hi');
 		break;
 	default:
