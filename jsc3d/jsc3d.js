@@ -889,7 +889,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		this.isTouchHeld = false;
 		//alert('hi');
-                setTimeout('mySlowAllTouch(this.wasPinch)',200)
+                setTimeout('mySlowAllTouch('wow')',200)
 		break;
 	case 'hold':
 		this.isTouchHeld = true;
@@ -921,7 +921,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			break;
 		this.zoomFactor = this.baseZoomFactor * e.gesture.scale;
 		this.update();
-		this.wasPinch = true;
+		//this.wasPinch = true;
 		//alert('hi');
 		break;
 	default:
