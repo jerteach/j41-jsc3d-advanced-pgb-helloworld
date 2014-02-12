@@ -27,7 +27,6 @@
 	@namespace JSC3D
  */
 var JSC3D = JSC3D || {};
-var document.myWow = true;   // quick fix underway
 
 /**
 	@class Viewer
@@ -859,7 +858,7 @@ JSC3D.Viewer.prototype.keyUpHandler = function(e) {
 function mySlowAllTouch(){
      //passedThis.isTouchHeld = false;
     // alert(passedType);
-     document.myWow = true;
+     document.myWow = false;
 }
 
 /**
@@ -876,7 +875,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 	var info = this.pick(clientX, clientY);
 	this.wasPinch = false;
 	
-	if (document.myWow == true){
+	if (document.myWow == false){
 
 	switch(e.type) {
 	case 'touch':
@@ -892,7 +891,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		this.isTouchHeld = false;
 		//alert('hi');
-		document.myWow = false;
+		document.myWow = true;
                 setTimeout('mySlowAllTouch()',200)
 		break;
 	case 'hold':
