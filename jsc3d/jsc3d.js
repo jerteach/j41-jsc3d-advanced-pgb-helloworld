@@ -857,7 +857,7 @@ JSC3D.Viewer.prototype.keyUpHandler = function(e) {
 
 function mySlowAfterPinch(){
 	
-	alert('wow')
+	alert(this.delayPan)
 }
 
 
@@ -888,6 +888,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 		if(this.onmouseup)
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		this.isTouchHeld = false;
+		this.delayPan = 4;
 		setTimeout('mySlowAfterPinch()',900);
 		//this.delayPan
 		break;
