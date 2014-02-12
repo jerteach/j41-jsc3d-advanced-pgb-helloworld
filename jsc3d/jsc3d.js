@@ -880,6 +880,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 		this.baseZoomFactor = this.zoomFactor;
 		this.mouseX = clientX;
 		this.mouseY = clientY;
+		alert('hi')
 		break;
 	case 'release':
 		if(this.onmouseup)
@@ -918,7 +919,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			break;
 		this.zoomFactor = this.baseZoomFactor * e.gesture.scale;
 		this.update();
-		alert('hi');
+		//alert('hi');
 		break;
 	default:
 		break;
