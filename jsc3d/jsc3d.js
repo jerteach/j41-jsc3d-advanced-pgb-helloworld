@@ -27,7 +27,7 @@
 	@namespace JSC3D
  */
 var JSC3D = JSC3D || {};
-
+var document.myWow = true;   // quick fix underway
 
 /**
 	@class Viewer
