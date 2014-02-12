@@ -854,6 +854,12 @@ JSC3D.Viewer.prototype.keyUpHandler = function(e) {
 	this.keyStates[e.keyCode] = false;
 };
 
+/** quick fix to slow down jesture end
+*/
+function mySlowAllTouch(passedThis){
+     passedThis.isTouchHeld = false;
+}
+
 /**
 	The gesture event handling routine which implements gesture-based control on touch devices.
 	This is based on Hammer.js gesture event implementation.
@@ -878,7 +884,8 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 	case 'release':
 		if(this.onmouseup)
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
-		this.isTouchHeld = false;
+		//this.isTouchHeld = false;
+                                   setTimeout('mySlowAllTouch(this)',500)
 		break;
 	case 'hold':
 		this.isTouchHeld = true;
