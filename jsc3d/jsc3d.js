@@ -859,6 +859,7 @@ JSC3D.Viewer.prototype.keyUpHandler = function(e) {
 function mySlowAllTouch(passedType){
      //passedThis.isTouchHeld = false;
      alert(passedType);
+     document.myWow = true
 }
 
 /**
@@ -874,6 +875,8 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 	var clientY = e.gesture.center.pageY - document.body.scrollTop;
 	var info = this.pick(clientX, clientY);
 	this.wasPinch = false;
+	
+	if (document.myWow == true){
 
 	switch(e.type) {
 	case 'touch':
@@ -889,6 +892,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		this.isTouchHeld = false;
 		//alert('hi');
+		document.myWow = false;
                 setTimeout('mySlowAllTouch('wow')',200)
 		break;
 	case 'hold':
@@ -926,6 +930,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 		break;
 	default:
 		break;
+	}
 	}
 
 	e.gesture.preventDefault();
