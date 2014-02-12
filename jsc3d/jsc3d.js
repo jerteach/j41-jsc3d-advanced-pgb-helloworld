@@ -28,6 +28,7 @@
  */
 var JSC3D = JSC3D || {};
 
+
 /**
 	@class Viewer
 
@@ -143,6 +144,7 @@ JSC3D.Viewer = function(canvas, parameters) {
 	this.progressRectangle = null;
 	this.messagePanel = null;
 	this.webglBackend = null;
+	this.delayPan = null;
 
 	// setup input handlers.
 	// compatibility for touch devices is taken into account
@@ -853,13 +855,13 @@ JSC3D.Viewer.prototype.keyUpHandler = function(e) {
 	this.keyStates[e.keyCode] = false;
 };
 
-/** quick fix to slow down jesture end
-*/
-function mySlowAllTouch(){
-     //passedThis.isTouchHeld = false;
-     alert('wow');
-     //document.myWow = false;
+function mySlowAfterPinch(){
+	
+	alert('wow')
 }
+
+
+
 
 /**
 	The gesture event handling routine which implements gesture-based control on touch devices.
@@ -873,9 +875,6 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 	var clientX = e.gesture.center.pageX - document.body.scrollLeft;
 	var clientY = e.gesture.center.pageY - document.body.scrollTop;
 	var info = this.pick(clientX, clientY);
-	this.wasPinch = false;
-	
-	if (document.myWow == false){
 
 	switch(e.type) {
 	case 'touch':
@@ -884,15 +883,13 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 		this.baseZoomFactor = this.zoomFactor;
 		this.mouseX = clientX;
 		this.mouseY = clientY;
-		//alert('hi')
 		break;
 	case 'release':
 		if(this.onmouseup)
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		this.isTouchHeld = false;
-		//alert('hi');
-		//document.myWow = true;
-                setTimeout('mySlowAllTouch()',900)
+		setTimeout('mySlowAfterPinch()',900);
+		//this.delayPan
 		break;
 	case 'hold':
 		this.isTouchHeld = true;
@@ -924,12 +921,9 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			break;
 		this.zoomFactor = this.baseZoomFactor * e.gesture.scale;
 		this.update();
-		//this.wasPinch = true;
-		//alert('hi');
 		break;
 	default:
 		break;
-	}
 	}
 
 	e.gesture.preventDefault();
