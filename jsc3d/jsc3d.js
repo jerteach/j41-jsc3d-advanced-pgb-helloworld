@@ -889,7 +889,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		this.isTouchHeld = false;
 		//this.delayPan = 4;
-		document.myDelayPan = 4;
+		document.myDelayPan = true;
 		setTimeout('mySlowAfterPinch()',900);
 		//this.delayPan
 		break;
