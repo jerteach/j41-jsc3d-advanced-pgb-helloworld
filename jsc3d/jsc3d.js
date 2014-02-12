@@ -858,6 +858,7 @@ JSC3D.Viewer.prototype.keyUpHandler = function(e) {
 function mySlowAfterPinch(){
 	
 	alert(document.myDelayPan)
+	document.myDelayPan = false
 }
 
 
@@ -906,11 +907,14 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			this.panning[0] += ratio * (clientX - this.mouseX);
 			this.panning[1] += ratio * (clientY - this.mouseY);
 		}
-		else {					// rotate
+		else {	
+		      if(document.myDelayPan == false){	
+			// rotate
 			var rotX = (clientY - this.mouseY) * 360 / this.canvas.width;
 			var rotY = (clientX - this.mouseX) * 360 / this.canvas.height;
 			this.rotMatrix.rotateAboutXAxis(rotX);
 			this.rotMatrix.rotateAboutYAxis(rotY);
+		     }
 		}
 		this.mouseX = clientX;
 		this.mouseY = clientY;
