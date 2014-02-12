@@ -857,7 +857,8 @@ JSC3D.Viewer.prototype.keyUpHandler = function(e) {
 /** quick fix to slow down jesture end
 */
 function mySlowAllTouch(passedThis){
-     passedThis.isTouchHeld = false;
+     //passedThis.isTouchHeld = false;
+     alert('hi')
 }
 
 /**
@@ -880,14 +881,14 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 		this.baseZoomFactor = this.zoomFactor;
 		this.mouseX = clientX;
 		this.mouseY = clientY;
-		alert('hi')
+		//alert('hi')
 		break;
 	case 'release':
 		if(this.onmouseup)
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		this.isTouchHeld = false;
 		//alert('hi');
-                                  // setTimeout('mySlowAllTouch(this)',500)
+                                   setTimeout('mySlowAllTouch(this)',2000)
 		break;
 	case 'hold':
 		this.isTouchHeld = true;
