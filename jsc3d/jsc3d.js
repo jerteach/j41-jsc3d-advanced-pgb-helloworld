@@ -857,8 +857,8 @@ JSC3D.Viewer.prototype.keyUpHandler = function(e) {
 
 function mySlowAfterPinch(){
 	
-	alert(document.myDelayPan)
-	document.myDelayPan = false
+//	alert(document.myDelayPan)
+	document.myDelayPan = false;
 }
 
 
@@ -890,7 +890,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 			this.onmouseup(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		this.isTouchHeld = false;
 		//this.delayPan = 4;
-		document.myDelayPan = true;
+		
 		setTimeout('mySlowAfterPinch()',900);
 		//this.delayPan
 		break;
@@ -921,6 +921,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 		this.update();
 		break;
 	case 'pinch':
+		document.myDelayPan = true;
 		if(this.onmousewheel)
 			this.onmousewheel(info.canvasX, info.canvasY, 0, info.depth, info.mesh);
 		if(!this.isDefaultInputHandlerEnabled)
