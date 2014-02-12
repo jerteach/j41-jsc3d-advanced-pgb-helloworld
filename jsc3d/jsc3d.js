@@ -891,7 +891,7 @@ JSC3D.Viewer.prototype.gestureHandler = function(e) {
 		this.isTouchHeld = false;
 		//this.delayPan = 4;
 		
-		setTimeout('mySlowAfterPinch()',900);
+		setTimeout('mySlowAfterPinch()',50);  // 50 ms delay 
 		//this.delayPan
 		break;
 	case 'hold':
